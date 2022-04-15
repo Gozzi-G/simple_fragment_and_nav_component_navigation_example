@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.example.navexample.contract.CustomAction
 import com.example.navexample.contract.HasCustomAction
@@ -118,15 +119,7 @@ class OptionsFragment : Fragment(), HasCustomTitle, HasCustomAction {
         private const val ARG_OPTIONS = "ARG_OPTIONS"
         private const val KEY_OPTIONS = "KEY_OPTIONS"
 
-
-        fun newInstance(options: Options): OptionsFragment {
-            val args = Bundle()
-            args.putParcelable(ARG_OPTIONS, options)
-            val fragment = OptionsFragment()
-            fragment.arguments = args
-            return fragment
-        }
-
+        fun createArgs(options: Options) = bundleOf(ARG_OPTIONS to options)
     }
 
     class BoxCountItem(
